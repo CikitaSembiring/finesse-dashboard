@@ -86,15 +86,16 @@ Berdasarkan hasil pengolahan, ditemukan beberapa pola perilaku finansial mahasis
 
 Proyek inovasi finansial ini dikembangkan oleh Tim **C26-PSU293** sebagai bagian dari program *Coding Camp powered by DBS Foundation*.
 
-CFCC319D6Y0190 - Patrick Nicxon Hutabarat - Full-Stack Web Developer
+*1. CFCC319D6Y0190* - **Patrick Nicxon Hutabarat** - Full-Stack Web Developer
 
-CDCC319D6X0998 - Dame Theresia Rejeki Sidauruk - Data Science
+*2. CDCC319D6X0998*- **Dame Theresia Rejeki Sidauruk** - Data Science 
 
-CDCC319D6X1254 - Cikita Natasya Br Sembiring - Data Scientist
+*3. CDCC319D6X1254* - **Cikita Natasya Br Sembiring** - Data Scientist
 
-CACC319D6Y0343 - Rayza Indafri Yahya - AI Engineer
+*4. CACC319D6Y0343* - **Rayza Indafri Yahya** - AI Engineer 
 
-CACC319D6Y1720 - Samuel Gautama Manik - AI Engineer
+*5. CACC319D6Y1720* - **Samuel Gautama Manik** - AI Engineer
+
 ---
 
 © 2026 Finesse Development Team.
