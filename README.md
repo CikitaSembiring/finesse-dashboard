@@ -1,6 +1,6 @@
 # 📊 Finesse: Student Financial Health & Behavior Dashboard
 
-[![Streamlit App] (https://finesse-dashboard.streamlit.app/) [https://finesse-dashboard.streamlit.app/]
+[Streamlit App] (https://finesse-dashboard.streamlit.app/) [https://finesse-dashboard.streamlit.app/]
 
 **Finesse Dashboard** adalah dashboard interaktif yang dirancang khusus untuk memantau kebiasaan mahasiswa dalam mengatur keuangan sehari-hari. Lewat dashboard ini, kita bisa melihat ke mana saja uang jajan dialokasikan, mendeteksi pola pengeluaran yang tidak wajar, serta melihat skor kesehatan finansial mahasiswa secara langsung.
 
@@ -95,5 +95,3 @@ Proyek inovasi finansial ini dikembangkan oleh Tim **C26-PSU293** sebagai bagian
 ---
 
 © 2026 Finesse Development Team.
-
-```
