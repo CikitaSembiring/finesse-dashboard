@@ -2,7 +2,7 @@
 
 [![Streamlit App] (https://finesse-dashboard.streamlit.app/) [https://finesse-dashboard.streamlit.app/]
 
-**Finesse** adalah dashboard interaktif yang dirancang khusus untuk memantau kebiasaan mahasiswa dalam mengatur keuangan sehari-hari. Lewat dashboard ini, kita bisa melihat ke mana saja uang jajan dialokasikan, mendeteksi pola pengeluaran yang tidak wajar, serta melihat skor kesehatan finansial mahasiswa secara langsung.
+**Finesse Dashboard** adalah dashboard interaktif yang dirancang khusus untuk memantau kebiasaan mahasiswa dalam mengatur keuangan sehari-hari. Lewat dashboard ini, kita bisa melihat ke mana saja uang jajan dialokasikan, mendeteksi pola pengeluaran yang tidak wajar, serta melihat skor kesehatan finansial mahasiswa secara langsung.
 
 ---
 
