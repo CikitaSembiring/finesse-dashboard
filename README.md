@@ -75,7 +75,7 @@ Aplikasi secara otomatis akan terbuka pada peramban web (*browser*) Anda melalui
 
 ## 💡 Insight & Analisis Perilaku Finansial
 
-Berdasarkan hasil pengolahan data eksploratif (*Exploratory Data Analysis*) riil pada dashboard ini, ditemukan beberapa pola perilaku finansial mahasiswa yang menjadi landasan pengembangan fitur cerdas aplikasi Finesse:
+Berdasarkan hasil pengolahan, ditemukan beberapa pola perilaku finansial mahasiswa:
 
 * **Siklus Belanja Tertinggi (Minggu Ke-3):** Rata-rata nominal pengeluaran terbesar per transaksi justru melonjak di minggu ketiga dalam sebulan. Hal ini mencerminkan melemahnya kontrol psikologis belanja mahasiswa setelah kebutuhan pokok awal bulan terpenuhi.
 * **Titik Kritis Risiko (Minggu Ke-4):** Kasus penurunan stabilitas finansial (*health score drop*) berulang paling banyak terjadi pada rentang minggu keempat, mengonfirmasi pola krisis likuiditas keuangan mahasiswa akibat fenomena "tanggal tua".
