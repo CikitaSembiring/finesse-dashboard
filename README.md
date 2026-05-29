@@ -97,5 +97,3 @@ Proyek inovasi finansial ini dikembangkan oleh Tim **C26-PSU293** sebagai bagian
 © 2026 Finesse Development Team.
 
 ```
-
-```
