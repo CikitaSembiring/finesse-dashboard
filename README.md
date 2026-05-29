@@ -1,17 +1,7 @@
-Berikut adalah isi keseluruhan berkas `README.md` yang sudah digabungkan secara utuh ke dalam satu blok format Markdown.
-
-Silakan salin seluruh teks di bawah ini dan tempelkan langsung ke berkas `README.md` pada repositori GitHub proyekmu:
-
-```markdown
 # 📊 Finesse: Student Financial Health & Behavior Dashboard
 
-[![Streamlit App](https://static.streamlit.io/badge_svg.svg)](https://finesse-dashboard.streamlit.app)
-[![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org)
-[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-
-**Finesse** adalah platform analitik interaktif berbasis kecerdasan buatan (*Artificial Intelligence*) yang dirancang khusus untuk memetakan perilaku alokasi dana mahasiswa, mendeteksi anomali finansial, serta mengukur metrik skor kesehatan keuangan secara *real-time*. 
-
-Dashboard analitik ini berfungsi sebagai ringkasan eksekutif dan instrumen validasi data untuk mendukung arah pengembangan fitur cerdas pada ekosistem utama aplikasi **Finesse** yang mengintegrasikan pemodelan *Deep Neural Networks* (DNN) dan algoritma *K-Means Clustering*.
+[![Streamlit App](https://finesse-dashboard.streamlit.app/)
+Dashboard analitik ini berfungsi sebagai ringkasan eksekutif dan instrumen validasi data untuk mendukung arah pengembangan fitur cerdas pada ekosistem utama aplikasi **Finesse**.
 
 ---
 
@@ -55,14 +45,14 @@ Jika Anda ingin menjalankan dashboard analitik ini di lingkungan lokal (*local m
 ### 1. Kloning Repositori
 
 ```bash
-git clone [https://github.com/username-kamu/finesse-dashboard.git](https://github.com/username-kamu/finesse-dashboard.git)
+git clone(https://github.com/CikitaSembiring/finesse-dashboard.git)(https://github.com/CikitaSembiring/finesse-dashboard.git)
 cd finesse-dashboard
 
 ```
 
 ### 2. Instal Pustaka yang Diperlukan
 
-Pastikan komputer Anda telah terinstal Python (minimal versi 3.10 atau yang lebih baru). Eksekusi perintah `pip` untuk memasang seluruh dependensi dari file `requirements.txt`:
+Pastikan komputer Anda telah terinstal Python. Eksekusi perintah `pip` untuk memasang seluruh dependensi dari file `requirements.txt`:
 
 ```bash
 pip install -r requirements.txt
@@ -93,7 +83,7 @@ Berdasarkan hasil pengolahan data eksploratif (*Exploratory Data Analysis*) riil
 
 ## 👥 Tim Pengembang (Finesse Development Team)
 
-Proyek inovasi finansial ini dikembangkan oleh Tim **C26-PSU293** sebagai bagian dari program *Coding Camp powered by DBS Foundation*, bekerja sama dengan **Universitas Sumatera Utara**:
+Proyek inovasi finansial ini dikembangkan oleh Tim **C26-PSU293** sebagai bagian dari program *Coding Camp powered by DBS Foundation*.
 
 * **Patrick Nicxon Hutabarat** - Full-Stack Web Developer
 * **Dame Theresia Rejeki Sidauruk** - Data Science
