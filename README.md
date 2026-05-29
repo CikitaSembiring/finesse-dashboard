@@ -90,7 +90,7 @@ Proyek inovasi finansial ini dikembangkan oleh Tim **C26-PSU293** sebagai bagian
 
 *2. CDCC319D6X0998*- **Dame Theresia Rejeki Sidauruk** - Data Science 
 
-*3. CDCC319D6X1254* - **Cikita Natasya Br Sembiring** - Data Scientist
+*3. CDCC319D6X1254* - **Cikita Natasya Br Sembiring** - Data Science
 
 *4. CACC319D6Y0343* - **Rayza Indafri Yahya** - AI Engineer 
 
