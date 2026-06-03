@@ -360,4 +360,4 @@ with tab3:
 # 8. FOOTER BRANDING
 # ==============================================================================
 st.markdown("---")
-st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 12px;'>© 2026 Finesse Development Team — Universitas Sumatera Utara. All Rights Reserved.</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 12px;'>© 2026 Finesse Development Team — All Rights Reserved.</p>", unsafe_allow_html=True)
