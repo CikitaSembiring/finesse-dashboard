@@ -12,33 +12,55 @@ st.set_page_config(
     layout="wide"
 )
 
-# Kustom CSS 
+# Kustom CSS komprehensif untuk mengunci warna latar belakang dan teks agar adaptif
 st.markdown("""
     <style>
-    /* Mengubah latar belakang sidebar menjadi Deep Navy Blue khas Finesse */
+    /* 1. Latar belakang sidebar menggunakan warna Slate Blue yang teduh dan adem */
     [data-testid="stSidebar"] {
-        background-color: #1E3A8A !important;
+        background-color: #334155 !important;
     }
     
-    /* Mengubah warna teks judul, markdown, dan label filter di sidebar menjadi putih agar kontras */
-    [data-testid="stSidebar"] .stMarkdown, 
-    [data-testid="stSidebar"] h1, 
-    [data-testid="stSidebar"] h2, 
-    [data-testid="stSidebar"] h3, 
-    [data-testid="stSidebar"] label {
+    /* 2. Memaksa semua jenis teks & label di dalam sidebar tetap berwarna PUTIH BERSIH */
+    [data-testid="stSidebar"] .stMarkdown,
+    [data-testid="stSidebar"] .stMarkdown p,
+    [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3, 
+    [data-testid="stSidebar"] h4, [data-testid="stSidebar"] h5, [data-testid="stSidebar"] h6, 
+    [data-testid="stSidebar"] label, [data-testid="stSidebar"] p, [data-testid="stSidebar"] span {
         color: #FFFFFF !important;
     }
     
-    /* Mempercantik teks bantuan kecil di dalam sidebar jika ada */
-    [data-testid="stSidebar"] p {
-        color: #E2E8F0 !important;
+    /* 3. Menyesuaikan warna pil/tag di dalam multiselect sidebar agar teks putihnya tetap kontras */
+    span[data-baseweb="tag"] {
+        background-color: #475569 !important;
+        color: #FFFFFF !important;
+    }
+
+    /* 4. Memaksa teks judul & deskripsi dashboard TETAP PUTIH di Light & Dark Mode */
+    .judul-finesse {
+        color: #FFFFFF !important;
+        font-size: 28px !important;
+        font-weight: 700 !important;
+        margin: 0 !important;
+        letter-spacing: -0.5px !important;
+        line-height: 1.3 !important;
+    }
+    
+    .deskripsi-finesse {
+        color: #F1F5F9 !important;
+        font-size: 14px !important;
+        margin-top: 12px !important;
+        opacity: 0.95 !important;
+        line-height: 1.6 !important;
+        font-weight: 400 !important;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# Mengatur tema visualisasi 
+# Mengatur tema visualisasi dasar agar bersih dan profesional
 sns.set_theme(style="whitegrid")
 plt.rcParams['font.family'] = 'sans-serif'
+plt.rcParams['text.color'] = '#1E293B'
+plt.rcParams['axes.labelcolor'] = '#475569'
 
 # ==============================================================================
 # 2. MEMUAT DATASET
@@ -53,7 +75,7 @@ def load_data():
 df = load_data()
 
 # ==============================================================================
-# 3. SIDEBAR FILTER INTERAKTIF 
+# 3. SIDEBAR FILTER INTERAKTIF (WARNA SLATE ADEM & TEKS FULL PUTIH BERSIH)
 # ==============================================================================
 st.sidebar.header("🎛️ Panel Filter Dashboard")
 st.sidebar.markdown("Filter data di bawah ini untuk melihat perubahan pola finansial secara real-time.")
@@ -69,25 +91,26 @@ selected_payments = st.sidebar.multiselect("Metode Pembayaran:", payment_methods
 # Menerapkan filter ke dataset utama yang berjalan di dashboard
 filtered_df = df[(df['category'].isin(selected_categories)) & (df['payment_method'].isin(selected_payments))]
 
-# Cek jika data kosong karena filter terlalu ketat
 if len(filtered_df) == 0:
     st.error("⚠️ Data tidak ditemukan untuk kombinasi filter ini. Silakan sesuaikan kembali filter Anda di sidebar.")
     st.stop()
 
 # ==============================================================================
-# 4. HEADER DASHBOARD 
+# 4. HEADER DASHBOARD - MUTED CHARCOAL & TEAL GRADATION (TEKS KUNCI PUTIH MUTLAK)
 # ==============================================================================
 st.markdown("""
-    <div style="background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%); padding: 32px; border-radius: 12px; margin-bottom: 28px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25);">
-        <h1 style='margin: 0; font-size: 30px; font-weight: 700; color: #FFFFFF !important; letter-spacing: -0.5px;'>📊 Finesse: Student Financial Health & Behavior Dashboard</h1>
-        <div style='margin-top: 12px; font-size: 14.5px; opacity: 0.95; line-height: 1.6; color: #FFFFFF !important; font-weight: 400;'>
+    <div style="background: linear-gradient(135deg, #1E293B 0%, #475569 100%); padding: 32px; border-radius: 12px; margin-bottom: 28px; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);">
+        <p class="judul-finesse">
+            Finesse: Gamified Budgeting & Financial Health Scorer
+        </p>
+        <p class="deskripsi-finesse">
             Platform analitik interaktif untuk memetakan perilaku alokasi dana mahasiswa, mendeteksi anomali finansial, serta mengukur metrik skor kesehatan keuangan guna mendukung ekosistem cerdas fitur Finesse. Gunakan panel filter di sebelah kiri untuk mengeksplorasi data secara dinamis.
-        </div>
+        </p>
     </div>
 """, unsafe_allow_html=True)
 
 # ==============================================================================
-# 5. KEY PERFORMANCE INDICATORS
+# 5. KEY PERFORMANCE INDICATORS (KPI) - AKSEN SOFT TEAL & GREEN
 # ==============================================================================
 col1, col2, col3, col4 = st.columns(4)
 
@@ -98,22 +121,22 @@ val_rata_skor = f"{filtered_df['financial_health_score'].mean():.2f} / 100"
 
 with col1:
     with st.container(border=True):
-        st.markdown("<p style='color: #3B82F6; font-weight: 600; font-size: 12px; margin: 0;'>🔹 TOTAL CATATAN TRANSAKSI</p>", unsafe_allow_html=True)
+        st.markdown("<p style='color: #0D9488; font-weight: 600; font-size: 11px; margin: 0;'>🔹 TOTAL CATATAN TRANSAKSI</p>", unsafe_allow_html=True)
         st.markdown(f"## {val_total_transaksi}")
 
 with col2:
     with st.container(border=True):
-        st.markdown("<p style='color: #3B82F6; font-weight: 600; font-size: 12px; margin: 0;'>🔹 RATA-RATA PENGELUARAN</p>", unsafe_allow_html=True)
+        st.markdown("<p style='color: #0D9488; font-weight: 600; font-size: 11px; margin: 0;'>🔹 RATA-RATA PENGELUARAN</p>", unsafe_allow_html=True)
         st.markdown(f"## {val_rata_pengeluaran}")
 
 with col3:
     with st.container(border=True):
-        st.markdown("<p style='color: #3B82F6; font-weight: 600; font-size: 12px; margin: 0;'>🔹 RATA-RATA BUDGET BULANAN</p>", unsafe_allow_html=True)
+        st.markdown("<p style='color: #0D9488; font-weight: 600; font-size: 11px; margin: 0;'>🔹 RATA-RATA BUDGET BULANAN</p>", unsafe_allow_html=True)
         st.markdown(f"## {val_rata_budget}")
 
 with col4:
     with st.container(border=True):
-        st.markdown("<p style='color: #10B981; font-weight: 600; font-size: 12px; margin: 0;'>🟢 RATA-RATA SKOR KESEHATAN</p>", unsafe_allow_html=True)
+        st.markdown("<p style='color: #16A34A; font-weight: 600; font-size: 11px; margin: 0;'>🟢 RATA-RATA SKOR KESEHATAN</p>", unsafe_allow_html=True)
         st.markdown(f"## {val_rata_skor}")
 
 st.markdown("<br>", unsafe_allow_html=True)
@@ -140,9 +163,10 @@ with tab1:
             spend_kategori = spend_kategori.sort_values(by='amount', ascending=False).reset_index(drop=True)
             
             fig, ax = plt.subplots(figsize=(10, 5))
-            sns.barplot(x='amount', y='category', data=spend_kategori, palette='Blues_r', ax=ax)
+            sns.barplot(x='amount', y='category', data=spend_kategori, palette='GnBu_r', ax=ax)
             ax.set_xlabel("Total Pengeluaran Kumulatif (Rp)")
             ax.set_ylabel("Kategori")
+            ax.ticklabel_format(style='plain', axis='x')  
             ax.spines['top'].set_visible(False)
             ax.spines['right'].set_visible(False)
             st.pyplot(fig)
@@ -152,19 +176,16 @@ with tab1:
             top_kategori_val = spend_kategori.iloc[0]['amount']
             
             tabel_kategori_rapi = spend_kategori.rename(columns={
-                'category': 'Kategori Pengeluaran',
-                'amount': 'Total Pengeluaran',
-                'persentase': 'Kontribusi Alokasi'
+                'category': 'Kategori Pengeluaran', 'amount': 'Total Pengeluaran', 'persentase': 'Kontribusi Alokasi'
             })
             st.dataframe(tabel_kategori_rapi.style.format({'Total Pengeluaran': 'Rp {:,}', 'Kontribusi Alokasi': '{:.2f}%'}), use_container_width=True)
-            
-            st.info(f"💡 **Insight Utama Kategori:** Fakta data menunjukkan pos pengeluaran terbesar adalah **{top_kategori}** dengan total akumulasi mencapai **Rp {int(top_kategori_val):,}** ({top_kategori_pct:.2f}%).")
+            st.info(f"💡 **Insight Utama Kategori:** Pos pengeluaran terbesar adalah **{top_kategori}** dengan total akumulasi mencapai **Rp {int(top_kategori_val):,}** ({top_kategori_pct:.2f}%).")
 
     with right_col:
         with st.container(border=True):
             st.markdown("#### Karakteristik Transaksi per Metode Pembayaran")
             fig, ax = plt.subplots(figsize=(10, 5))
-            sns.boxplot(x='payment_method', y='amount', data=filtered_df, hue='payment_method', palette='Set2', legend=False, ax=ax)
+            sns.boxplot(x='payment_method', y='amount', data=filtered_df, hue='payment_method', palette='Pastel1', legend=False, ax=ax)
             ax.set_xlabel("Metode Pembayaran")
             ax.set_ylabel("Nominal Transaksi (Rp)")
             ax.spines['top'].set_visible(False)
@@ -172,19 +193,14 @@ with tab1:
             st.pyplot(fig)
             
             stats_metode = filtered_df.groupby('payment_method')['amount'].agg(['count', 'mean', 'median']).reset_index()
-            
             tabel_metode_rapi = stats_metode.rename(columns={
-                'payment_method': 'Metode Pembayaran',
-                'count': 'Jumlah Transaksi',
-                'mean': 'Rata-rata (Mean)',
-                'median': 'Nilai Tengah (Median)'
+                'payment_method': 'Metode Pembayaran', 'count': 'Jumlah Transaksi', 'mean': 'Rata-rata (Mean)', 'median': 'Nilai Tengah (Median)'
             })
             st.dataframe(tabel_metode_rapi.style.format({'Rata-rata (Mean)': 'Rp {:,}', 'Nilai Tengah (Median)': 'Rp {:,}', 'Jumlah Transaksi': '{:,}'}), use_container_width=True)
             
             stats_metode_sorted = stats_metode.sort_values(by='count', ascending=False)
             top_method = stats_metode_sorted.iloc[0]['payment_method']
             top_method_count = stats_metode_sorted.iloc[0]['count']
-            
             st.info(f"💡 **Insight Utama Metode Pembayaran:** Kanal pembayaran yang paling sering digunakan adalah **{top_method}** dengan intensitas sebanyak **{top_method_count:,} transaksi**.")
 
 # --- TAB 2: DETAIL DISTRIBUSI & KARAKTERISTIK DATA ---
@@ -196,31 +212,29 @@ with tab2:
         with st.container(border=True):
             st.markdown("#### Sebaran Variabilitas Nominal Transaksi")
             fig, ax = plt.subplots(figsize=(10, 5))
-            sns.histplot(filtered_df['amount'], bins=30, kde=True, color='blue', ax=ax)
+            sns.histplot(filtered_df['amount'], bins=30, kde=True, color='#475569', ax=ax)
             ax.set_xlabel("Nominal Uang per Transaksi (Rp)")
             ax.set_ylabel("Frekuensi")
             ax.spines['top'].set_visible(False)
             ax.spines['right'].set_visible(False)
             st.pyplot(fig)
             
-            uv_max_amount = filtered_df['amount'].max()
             uv_median_amount = filtered_df['amount'].median()
-            st.markdown(f"**Kesimpulan:** Mayoritas transaksi bernilai retail kecil dengan nilai tengah **Rp {int(uv_median_amount):,}**, miring ke kanan (*positive-skewed*) dengan nilai maksimal **Rp {int(uv_max_amount):,}**.")
+            st.markdown(f"**Kesimpulan:** Mayoritas transaksi bernilai retail kecil dengan nilai tengah **Rp {int(uv_median_amount):,}**.")
 
     with uv_col2:
         with st.container(border=True):
             st.markdown("#### Sebaran Metrik Skor Kesehatan Keuangan")
             fig, ax = plt.subplots(figsize=(10, 5))
-            sns.histplot(filtered_df['financial_health_score'], bins=30, kde=True, color='green', ax=ax)
+            sns.histplot(filtered_df['financial_health_score'], bins=30, kde=True, color='#0D9488', ax=ax)
             ax.set_xlabel("Skor Kesehatan Keuangan (0 - 100)")
             ax.set_ylabel("Frekuensi")
             ax.spines['top'].set_visible(False)
             ax.spines['right'].set_visible(False)
             st.pyplot(fig)
             
-            uv_min_score = filtered_df['financial_health_score'].min()
             uv_median_score = filtered_df['financial_health_score'].median()
-            st.markdown(f"**Kesimpulan:** Tingkat kesehatan finansial mahasiswa memiliki median di angka **{uv_median_score:.2f}**, dengan batas kritis terendah pada skor **{uv_min_score:.2f}**.")
+            st.markdown(f"**Kesimpulan:** Tingkat kesehatan finansial mahasiswa memiliki median di angka **{uv_median_score:.2f}**.")
 
     st.markdown("---")
     st.markdown("### Analisis Tren Siklus Finansial & Makro Pengeluaran")
@@ -275,19 +289,26 @@ with tab2:
                 ax.spines['right'].set_visible(False)
                 st.pyplot(fig)
                 
-                max_user_spend = profil_user['Total'].max()
-                st.success(f"🎯 Akumulasi pengeluaran bulanan tertinggi menyentuh angka **Rp {int(max_user_spend):,}**.")
+                # --- SINKRONISASI HASIL PERHITUNGAN JUJUR BERDASARKAN LAPORAN RISET TIM (VERSI RINGKAS & SCANNABLE) ---
+                mean_ratio_pct = profil_user['Rasio_Hiburan'].mean() * 100
+                high_risk_count = len(profil_user[profil_user['Rasio_Hiburan'] > 0.3])
+                high_risk_pct = (high_risk_count / len(profil_user)) * 100
+                
+                # --- POTONGAN KODE BARIS ~190-197 DI APP.PY (VERSI SUPER RINGKAS) ---
+                st.error(f"""
+                🎯 **Kesimpulan Makro:** Sebanyak **{high_risk_count} pengguna ({high_risk_pct:.2f}%)** terdeteksi sebagai *high-risk spender* dengan rata-rata alokasi dana hiburan sangat tinggi, yaitu **{mean_ratio_pct:.1f}%**. Ketimpangan konsumsi ini menjadi pemicu utama runtuhnya stabilitas keuangan mahasiswa di setiap siklus akhir bulan (tanggal tua).
+                """)
             else:
                 st.warning("Kombinasi filter saat ini tidak memenuhi klasifikasi makro.")
 
     # --- SIKLUS MINGGU PALING BOROS ---
     st.markdown("<br>", unsafe_allow_html=True)
     with st.container(border=True):
-        st.markdown("#### 📊 Analisis Tambahan: Siklus Minggu Paling Boros Mahasiswa")
+        st.markdown("#### 📊 Analisis : Siklus Minggu Paling Boros Mahasiswa")
         rata_mingguan = filtered_df.groupby('minggu_ke')['amount'].mean().reset_index()
         
         fig, ax = plt.subplots(figsize=(15, 4))
-        sns.barplot(x='minggu_ke', y='amount', data=rata_mingguan, palette='Oranges', ax=ax)
+        sns.barplot(x='minggu_ke', y='amount', data=rata_mingguan, palette='Blues', ax=ax)
         ax.set_xlabel("Siklus Minggu dalam Bulan")
         ax.set_ylabel("Rata-rata Besaran Transaksi (Rp)")
         ax.spines['top'].set_visible(False)
@@ -305,17 +326,13 @@ with tab2:
 # ==============================================================================
 with tab3:
     st.markdown("### 🔍 Deteksi Nilai Ekstrim Transaksi Mahasiswa")
-    st.markdown("Halaman ini menyajikan rincian data transaksi tunggal dengan nilai nominal tertinggi (Terboros) dan terendah (Terhemat) untuk membantu mendeteksi pencilan perilaku transaksi.")
-    
     boros_col, hemat_col = st.columns(2)
     
-    # Ambil 10 baris transaksi terboros
     top_boros = filtered_df.sort_values(by='amount', ascending=False).head(10).reset_index(drop=True)
     top_boros_display = top_boros[['transaction_id', 'user_id', 'date', 'category', 'amount', 'payment_method']].rename(columns={
         'transaction_id': 'ID Transaksi', 'user_id': 'ID Pengguna', 'date': 'Tanggal', 'category': 'Kategori', 'amount': 'Nominal Belanja', 'payment_method': 'Metode Pembayaran'
     })
     
-    # Ambil 10 baris transaksi terhemat
     top_hemat = filtered_df.sort_values(by='amount', ascending=True).head(10).reset_index(drop=True)
     top_hemat_display = top_hemat[['transaction_id', 'user_id', 'date', 'category', 'amount', 'payment_method']].rename(columns={
         'transaction_id': 'ID Transaksi', 'user_id': 'ID Pengguna', 'date': 'Tanggal', 'category': 'Kategori', 'amount': 'Nominal Belanja', 'payment_method': 'Metode Pembayaran'
@@ -324,10 +341,7 @@ with tab3:
     with boros_col:
         with st.container(border=True):
             st.markdown("#### 🚨 Top 10 Transaksi Tunggal Terboros")
-            st.dataframe(
-                top_boros_display.style.format({'Nominal Belanja': 'Rp {:,}', 'Tanggal': lambda t: t.strftime('%Y-%m-%d')}), 
-                use_container_width=True, hide_index=True
-            )
+            st.dataframe(top_boros_display.style.format({'Nominal Belanja': 'Rp {:,}', 'Tanggal': lambda t: t.strftime('%Y-%m-%d')}), use_container_width=True, hide_index=True)
             if not top_boros.empty:
                 kategori_puncak = top_boros.iloc[0]['category']
                 nilai_puncak = top_boros.iloc[0]['amount']
@@ -336,10 +350,7 @@ with tab3:
     with hemat_col:
         with st.container(border=True):
             st.markdown("#### 🍃 Top 10 Transaksi Tunggal Terhemat")
-            st.dataframe(
-                top_hemat_display.style.format({'Nominal Belanja': 'Rp {:,}', 'Tanggal': lambda t: t.strftime('%Y-%m-%d')}), 
-                use_container_width=True, hide_index=True
-            )
+            st.dataframe(top_hemat_display.style.format({'Nominal Belanja': 'Rp {:,}', 'Tanggal': lambda t: t.strftime('%Y-%m-%d')}), use_container_width=True, hide_index=True)
             if not top_hemat.empty:
                 kategori_dasar = top_hemat.iloc[0]['category']
                 nilai_dasar = top_hemat.iloc[0]['amount']
@@ -349,4 +360,4 @@ with tab3:
 # 8. FOOTER BRANDING
 # ==============================================================================
 st.markdown("---")
-st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 12px;'>© 2026 Finesse Development Team. All Rights Reserved.</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 12px;'>© 2026 Finesse Development Team — Universitas Sumatera Utara. All Rights Reserved.</p>", unsafe_allow_html=True)
